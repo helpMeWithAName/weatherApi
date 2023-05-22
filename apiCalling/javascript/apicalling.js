@@ -125,24 +125,24 @@ window.onclick = function(event) {
 }
 
 
-let toggleBtn = document.getElementById('toggle-btn');
-let table = document.getElementById('table');
+// let toggleBtn = document.getElementById('toggle-btn');
+// let table = document.getElementById('table');
 
-// Get the state from localStorage, or set it to 'block' if it's not set
-let state = localStorage.getItem('tableState') || 'block';
-table.style.display = state;
-if (state === 'none') {
-  toggleBtn.style.display = 'block';
-}
+// // Get the state from localStorage, or set it to 'block' if it's not set
+// let state = localStorage.getItem('tableState') || 'block';
+// table.style.display = state;
+// if (state === 'none') {
+//   toggleBtn.style.display = 'block';
+// }
 
-toggleBtn.addEventListener('click', function() {
-  if (table.style.display === 'none') {
-    table.style.display = 'block';
-    toggleBtn.style.display = 'none';
-    localStorage.setItem('tableState', 'block');
-  } else {
-    table.style.display = 'none';
-    toggleBtn.style.display = 'block';
-    localStorage.setItem('tableState', 'none');
-  }
-});
+// toggleBtn.addEventListener('click', function() {
+//   if (table.style.display === 'none') {
+//     table.style.display = 'block';
+//     toggleBtn.style.display = 'none';
+//     localStorage.setItem('tableState', 'block');
+//   } else {
+//     table.style.display = 'none';
+//     toggleBtn.style.display = 'block';
+//     localStorage.setItem('tableState', 'none');
+//   }
+
