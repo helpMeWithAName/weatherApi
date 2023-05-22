@@ -1,3 +1,15 @@
+// let btn = document.getElementsByClassName("dropdown-content");
+// let btn1 = btn[0];
+// let dropTable = document.getElementById("table");
+
+// function tableRemove() {
+// dropTable.style.display="none"
+// };
+
+// btn.addEventListener("click", tableRemove);
+
+
+
 if ("geolocation" in navigator) {
   /* geolocation is available */
   navigator.geolocation.getCurrentPosition(function(position) {
@@ -17,21 +29,22 @@ if ("geolocation" in navigator) {
     document.getElementById("windspeed").innerHTML=`${data.properties.timeseries[0].data.instant.details.wind_speed}m/s`
     document.getElementById("regn").innerHTML=`${data.properties.timeseries[0].data.next_1_hours.details.precipitation_amount}mm`
     document.getElementById("temp").innerHTML=`${data.properties.timeseries[0].data.instant.details.air_temperature}°`
-  
+
+    for (let i = 18; i < 42; i++) {
+      let temps = document.getElementsByClassName("Temp");
+      for (let j = 0; j < temps.length; j++) {
+        temps[j].innerHTML = data.properties.timeseries[i+j].data.instant.details.air_temperature;
+        console.log(data.properties.timeseries[i+j].data.instant.details.air_temperature)
+      }
+    }
+    
     } );
+  
   });
 } else {
   /* geolocation IS NOT available */
   console.log("Geolocation is not available.");
 }
-
-
-  
-
-
-
-
-
 
 
 
@@ -47,6 +60,11 @@ fetch('https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=59.7212772
   document.getElementById("windspeed").innerHTML=`${data.properties.timeseries[0].data.instant.details.wind_speed}m/s`
   document.getElementById("regn").innerHTML=`${data.properties.timeseries[0].data.next_1_hours.details.precipitation_amount}mm`
   document.getElementById("temp").innerHTML=`${data.properties.timeseries[0].data.instant.details.air_temperature}°`
+
+  for (let i =18; i < 42; i++){
+    console.error(data.properties.timeseries[i].data.instant.details.air_temperature)
+    console.log(i)
+  }
 
   } );
 }
@@ -84,18 +102,20 @@ function yrVerBergen(){
 }
 
 
+let dropdowns = document.getElementsByClassName("dropdown");
 
-
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+for (let i = 0; i < dropdowns.length; i++) {
+  let dropdown = dropdowns[i];
+  let button = dropdown.getElementsByClassName("dropbtn")[0];
+  button.onclick = function() {
+    dropdown.getElementsByClassName("dropdown-content")[0].classList.toggle("show");
+  }
 }
 
-// Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
     let dropdowns = document.getElementsByClassName("dropdown-content");
-    let i;
-    for (i = 0; i < dropdowns.length; i++) {
+    for (let i = 0; i < dropdowns.length; i++) {
       let openDropdown = dropdowns[i];
       if (openDropdown.classList.contains('show')) {
         openDropdown.classList.remove('show');
@@ -103,3 +123,26 @@ window.onclick = function(event) {
     }
   }
 }
+
+
+let toggleBtn = document.getElementById('toggle-btn');
+let table = document.getElementById('table');
+
+// Get the state from localStorage, or set it to 'block' if it's not set
+let state = localStorage.getItem('tableState') || 'block';
+table.style.display = state;
+if (state === 'none') {
+  toggleBtn.style.display = 'block';
+}
+
+toggleBtn.addEventListener('click', function() {
+  if (table.style.display === 'none') {
+    table.style.display = 'block';
+    toggleBtn.style.display = 'none';
+    localStorage.setItem('tableState', 'block');
+  } else {
+    table.style.display = 'none';
+    toggleBtn.style.display = 'block';
+    localStorage.setItem('tableState', 'none');
+  }
+});

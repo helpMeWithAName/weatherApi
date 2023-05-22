@@ -19,6 +19,7 @@ html, body,* {
     background-image: linear-gradient(to right, #64edfc, #79f9e0);
     width: 100%;
     height: 5rem;
+    margin-top: -5rem;
 
 }
 
@@ -46,6 +47,7 @@ a:hover{
 .dropdown {
     color: #000;
     position: fixed;
+    align-items: center;
     top: 1;
     right: 0;
     text-decoration: none;
@@ -86,10 +88,43 @@ a:hover{
     height: 48.4rem;
     margin-left: 15rem;
     margin-right: 15rem;
+    margin-top: 5rem;
     font-size: xx-large; 
-  
 }
 
+#statBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#regn{
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+#title{
+    margin-top: rem;
+}
+
+#table{
+    display: flex;
+    background-color: #20b6f1;
+    font-size: medium;
+
+}
+
+
+  
+#toggle-btn{
+    width: 20rem;
+}  
+
+
+
+td{
+    border: solid #000 2px;
+}
 
 button{
    height: 2rem;
@@ -108,4 +143,3 @@ button:hover{
     display: flex;
     margin-bottom: -10;
 }
-
